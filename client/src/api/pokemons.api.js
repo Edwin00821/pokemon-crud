@@ -1,8 +1,12 @@
 import axios from "axios";
 
+const URL =
+  "https://pokemon-crud-production.up.railway.app/api/pokemon" ||
+  "http://localhost:4000/api/pokemons";
+
 export const getPokemonsRequest = async () => {
   try {
-    const data = await axios.get("http://localhost:4000/api/pokemon");
+    const data = await axios.get(URL);
     return data;
   } catch (error) {
     if (error.response) {
@@ -27,7 +31,7 @@ export const getPokemonsRequest = async () => {
 
 export const createPokeRequest = async (poke) => {
   try {
-    const data = await axios.post("http://localhost:4000/api/pokemon/", poke);
+    const data = await axios.post(URL, poke);
     return data;
   } catch (error) {
     if (error.response) {
@@ -52,7 +56,7 @@ export const createPokeRequest = async (poke) => {
 
 export const getPokeRequest = async (id) => {
   try {
-    const data = await axios.get(`http://localhost:4000/api/pokemon/${id}`);
+    const data = await axios.get(`${URL}/${id}`);
     return data;
   } catch (error) {
     if (error.response) {
@@ -77,8 +81,8 @@ export const getPokeRequest = async (id) => {
 
 export const deletePokemRequest = async (id) => {
   try {
-    console.log('Id from delete', id);
-    const data = await axios.delete(`http://localhost:4000/api/pokemon/${id}`);
+    // console.log("Id from delete", id);
+    const data = await axios.delete(`${URL}/${id}`);
     return data;
   } catch (error) {
     if (error.response) {
@@ -103,10 +107,10 @@ export const deletePokemRequest = async (id) => {
 
 export const updatePokeRequest = async (id, newFields) => {
   console.log("update from poke.api", { id, newFields });
-  await axios.put(`http://localhost:4000/api/pokemon/${id}`, newFields);
+  await axios.put(`${URL}/${id}`, newFields);
 };
 
 export const togglePokeDoneRequest = async (id, done) =>
-  await axios.put(`http://localhost:4000/api/pokemon/${id}`, {
+  await axios.put(`${URL}/${id}`, {
     done,
   });
