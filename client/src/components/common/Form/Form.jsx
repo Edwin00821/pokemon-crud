@@ -145,7 +145,7 @@ export default function Form() {
 
           await createPoke({ ...FormatData, types });
         }
-        console.log({ FormatData });
+        // console.log({ FormatData });
       }
       navigate("/");
     } catch (error) {
