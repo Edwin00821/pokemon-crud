@@ -10,7 +10,7 @@ import { FaSortAmountUpAlt } from "react-icons/fa";
 import Loading from "./components/Loading";
 
 function App() {
-  const { pokemons, loadPokemons, createPoke } = usePokemons([]);
+  const { pokemons, loadPokemons, createPoke } = usePokemons();
   const [pokeFect, setPokeFetch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,9 +18,12 @@ function App() {
 
   useEffect(() => {
     try {
+      // console.log('first useEffect');
       loadPokemons();
-      console.log("conexion with server");
-      setLoading(false);
+      if (pokemons.length > 0) {
+        setLoading(false);
+      }
+      // console.log('loadPokemons', pokemons);
     } catch (err) {
       setError(err);
       setLoading(false);
@@ -28,15 +31,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("usseEffect pokeapi", loading, error, pokemons);
-    if (!setLoading && pokemons.length === 0) {
-      setLoading(false);
-      console.log("conexion with POKE API");
+    // console.log("UseEffect", pokemons, loading);
+    if (loading == true && pokemons.length === 0) {
+      // console.log("conexion with POKE API");
       getPokemonData().then((pokes) => {
         setPokeFetch(pokes);
         pokes.map((poke) => {
           createPoke(poke);
         });
+        setLoading(false);
       });
     }
   }, []);

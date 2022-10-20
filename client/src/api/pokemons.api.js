@@ -2,8 +2,10 @@ import axios from "axios";
 
 const URL =
   "https://pokemon-crud-production.up.railway.app/api/pokemon" ||
-  "http://localhost:4000/api/pokemons";
+  "http://localhost:4000/api/pokemon" ||
+  "";
 
+console.log(URL);
 export const getPokemonsRequest = async () => {
   try {
     const data = await axios.get(URL);
