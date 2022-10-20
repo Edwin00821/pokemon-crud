@@ -10,8 +10,8 @@ import { FaSortAmountUpAlt } from "react-icons/fa";
 import Loading from "./components/Loading";
 
 function App() {
-  const { pokemons, loadPokemons, createPoke } = usePokemons();
-  const [pokeFect, setPokeFetch] = useState(null);
+  const { pokemons, loadPokemons } = usePokemons();
+  // const [pokeFect, setPokeFetch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sort, setSort] = useState(false);
@@ -30,19 +30,19 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    // console.log("UseEffect", pokemons, loading);
-    if (loading == true && pokemons.length === 0) {
-      // console.log("conexion with POKE API");
-      getPokemonData().then((pokes) => {
-        setPokeFetch(pokes);
-        // pokes.map((poke) => {
-        //   createPoke(poke);
-        // });
-        setLoading(false);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   // console.log("UseEffect", pokemons, loading);
+  //   if (loading == true && pokemons.length === 0) {
+  //     // console.log("conexion with POKE API");
+  //     getPokemonData().then((pokes) => {
+  //       setPokeFetch(pokes);
+  //       // pokes.map((poke) => {
+  //       //   createPoke(poke);
+  //       // });
+  //       setLoading(false);
+  //     });
+  //   }
+  // }, []);
 
   const handleSort = () => {
     pokemons.reverse();
@@ -70,7 +70,7 @@ function App() {
         {loading ? (
           <Loading />
         ) : (
-          <ListOfPokemons pokemons={pokeFect || pokemons} />
+          <ListOfPokemons pokemons={ pokemons} />
         )}
       </div>
       <div>
