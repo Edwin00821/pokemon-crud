@@ -36,9 +36,9 @@ function App() {
       // console.log("conexion with POKE API");
       getPokemonData().then((pokes) => {
         setPokeFetch(pokes);
-        pokes.map((poke) => {
-          createPoke(poke);
-        });
+        // pokes.map((poke) => {
+        //   createPoke(poke);
+        // });
         setLoading(false);
       });
     }
