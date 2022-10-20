@@ -177,7 +177,7 @@ export const createPoke = async (req, res) => {
         id_ctype || getTypeId(name_type),
       ]);
     });
-
+    console.log("Pokemon created");
     res.status(201).json({ message: "Pokemon created" });
   } catch (error) {
     console.log(error);

@@ -34,6 +34,7 @@ export const getPokemonsRequest = async () => {
 export const createPokeRequest = async (poke) => {
   try {
     const data = await axios.post(URL, poke);
+    console.log("Se creo el pokemon");
     return data;
   } catch (error) {
     if (error.response) {

@@ -147,7 +147,7 @@ export default function Form() {
         }
         console.log({ FormatData });
       }
-      // navigate("/");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
